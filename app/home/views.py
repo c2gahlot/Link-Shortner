@@ -1,14 +1,35 @@
-from flask import render_template, request, jsonify, redirect, url_for
-from app.website import website
-import string
 import random
+import string
 from os.path import join, dirname, realpath
+
+from flask import render_template, request, redirect, url_for
+from flask_login import login_required
+
+from . import home
 
 STORAGE_FILE = join(dirname(realpath(__file__)), 'storage/shorten_urls')
 BASE_URL = 'http://127.0.0.1:5000/'
 
-@website.route('/', methods=['GET', 'POST'])
+
+@home.route('/')
 def homepage():
+    """
+    Render the homepage template on the / route
+    """
+    return render_template('home/index.html', title="Welcome")
+
+
+@home.route('/dashboard')
+@login_required
+def dashboard():
+    """
+    Render the dashboard template on the /dashboard route
+    """
+    return render_template('home/dashboard.html', title="Dashboard")
+
+
+@home.route('/', methods=['GET', 'POST'])
+def oldhomepage():
     """
     Render the homepage templates on the / route
     """
@@ -28,16 +49,16 @@ def homepage():
         try:
             mode = 'a'
             file = open(STORAGE_FILE, mode)
-            file.write(short_url+'=='+str(url+'\n'))
+            file.write(short_url + '==' + str(url + '\n'))
             file.close()
             return BASE_URL + short_url
         except Exception as e:
             print("Error Message : " + str(e.message))
 
-    return render_template('website/index.html')
+    return render_template('link/index.html')
 
 
-@website.route('/<url_key>', methods=['GET', 'POST'])
+@home.route('/<url_key>', methods=['GET', 'POST'])
 def redirect_url(url_key):
     """
     Redirect the page to the encrypted url
@@ -52,4 +73,4 @@ def redirect_url(url_key):
     except Exception as e:
         print("Error Message : " + str(e.message))
 
-    return redirect(url_for('website.homepage'))
+    return redirect(url_for('link.homepage'))
