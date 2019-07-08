@@ -1,8 +1,17 @@
-class ProductionConfig:
+from os import environ
+
+
+class BaseConfig:
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SQLALCHEMY_DATABASE_URI = environ.get('SQLALCHEMY_DATABASE_URI',
+                                          'mysql+pymysql://root:root@localhost/link_shortner')
+
+
+class ProductionConfig(BaseConfig):
     DEBUG = False
 
 
-class DevelopmentConfig:
+class DevelopmentConfig(BaseConfig):
     DEBUG = True
 
 
