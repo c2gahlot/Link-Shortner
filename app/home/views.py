@@ -6,11 +6,12 @@ from . import home
 from .. import db
 
 import string
-import random
+
+from random import choices
 
 
 def create_tiny_url():
-    return ''.join(random.choices(string.ascii_lowercase + string.digits, k=7))
+    return ''.join(choices(string.ascii_lowercase + string.digits, k=7))
 
 
 def retrieve_tiny_url(url, user_id):
