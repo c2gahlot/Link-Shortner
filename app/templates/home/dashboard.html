@@ -23,7 +23,7 @@
                     <tbody>
                     {% for link in links %}
                         <tr>
-                            <td>{{ link.tiny_url }}</td>
+                            <td>{{ base_url + link.tiny_url }}</td>
                             <td>{{ link.url }}</td>
                         </tr>
                     {% endfor %}

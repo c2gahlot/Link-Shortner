@@ -64,7 +64,7 @@ def dashboard():
         user_id = current_user.get_id()
         tiny_url = retrieve_tiny_url(form.url.data, user_id)
         flash('Here is your shortened url : ' + current_app.config['BASE_URL'] + tiny_url)
-    return render_template('home/dashboard.html', form=form, links=links, title="Dashboard")
+    return render_template('home/dashboard.html', form=form, base_url=current_app.config['BASE_URL'], links=links, title="Dashboard")
 
 
 @home.route('/admin/dashboard')
