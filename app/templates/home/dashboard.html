@@ -1,17 +1,35 @@
+{% import "bootstrap/utils.html" as utils %}
+{% import "bootstrap/wtf.html" as wtf %}
 {% extends "base.html" %}
 {% block title %}Dashboard{% endblock %}
 {% block body %}
-<div class="intro-header">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="intro-message">
-                    <h1>The Dashboard</h1>
-                    <h3>We made it here!</h3>
-                    <hr class="intro-divider">
-                </div>
+    <div class="intro-header">
+        <div class="container">
+            {{ utils.flashed_messages() }}
+            <div class="center">
+                <h1>Linker</h1>
+                <br/>
+                {{ wtf.quick_form(form) }}
+                <br/>
+                <br/>
+                <br/>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Tiny URL</th>
+                        <th scope="col">URL</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for link in links %}
+                        <tr>
+                            <td>{{ link.tiny_url }}</td>
+                            <td>{{ link.url }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
-</div>
 {% endblock %}

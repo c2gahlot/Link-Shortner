@@ -5,6 +5,7 @@ body, html {
 
 body, h1, h2, h3 {
     font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: black;
     font-weight: 700;
 }
 
@@ -67,8 +68,6 @@ p.copyright {
 .intro-header {
     padding-top: 50px;
     padding-bottom: 50px;
-    text-align: center;
-    color: #f8f8f8;
     background-size: cover;
     height: 100%;
 }
@@ -103,4 +102,8 @@ p.copyright {
   height: auto !important;
   height: 100%;
   margin: 0 auto -4em;
+}
+
+label {
+    color: black;
 }

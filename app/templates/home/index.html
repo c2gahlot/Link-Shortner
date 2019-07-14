@@ -1,17 +1,16 @@
+{% import "bootstrap/utils.html" as utils %}
+{% import "bootstrap/wtf.html" as wtf %}
 {% extends "base.html" %}
 {% block title %}Home{% endblock %}
 {% block body %}
-<div class="intro-header">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="intro-message">
-                    <h1>Linker</h1>
-                    <h3>Shorten your long URL's!</h3>
-                    <hr class="intro-divider">
-                </div>
+    <div class="intro-header">
+        <div class="container">
+            {{ utils.flashed_messages() }}
+            <div class="center">
+                <h1>Linker</h1>
+                <br/>
+                {{ wtf.quick_form(form) }}
             </div>
         </div>
     </div>
-</div>
 {% endblock %}

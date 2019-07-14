@@ -59,8 +59,8 @@ class Link(db.Model):
     __tablename__ = 'links'
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(60), unique=True)
-    description = db.Column(db.String(200))
+    tiny_url = db.Column(db.String(60), unique=True, nullable=False)
+    url = db.Column(db.String(200), index=True, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
     def __repr__(self):

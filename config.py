@@ -9,10 +9,12 @@ class BaseConfig:
 
 class ProductionConfig(BaseConfig):
     DEBUG = False
+    BASE_URL = 'http://linker.c2gahlot.com/'
 
 
 class DevelopmentConfig(BaseConfig):
     DEBUG = True
+    BASE_URL = 'http://192.168.10.11:82/'
 
 
 app_config = {
