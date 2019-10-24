@@ -1,9 +1,10 @@
 import os
 from app import create_app
+from json import load
 
-config_name = os.getenv('FLASK_CONFIG')
-app = create_app(config_name)
-
+with open('config.json') as f:
+    config = load(f)
+app = create_app(config)
 
 if __name__ == '__main__':
     app.run()

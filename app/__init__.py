@@ -4,19 +4,16 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_migrate import Migrate
 from flask_bootstrap import Bootstrap
-
-# local imports
-from config import app_config
+import pathlib
 
 # db variable initialization
 db = SQLAlchemy()
 login_manager = LoginManager()
 
 
-def create_app(config_name):
-    app = Flask(__name__, instance_relative_config=True)
-    app.config.from_object(app_config[config_name])
-    app.config.from_pyfile('config.py')
+def create_app(config):
+    app = Flask(__name__)
+    app.config.from_mapping(config)
 
     Bootstrap(app)
     db.init_app(app)
