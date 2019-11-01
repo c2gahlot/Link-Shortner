@@ -1,0 +1,7 @@
+{
+  "SECRET_KEY": "p9Bv<3Eid9%$i01",
+  "SQLALCHEMY_TRACK_MODIFICATIONS": false,
+  "SQLALCHEMY_DATABASE_URI": "mysql+pymysql://root:root@localhost/link_shortner",
+  "BASE_URL": "http://linker.c2gahlot.com/",
+  "DEBUG": false
+}
